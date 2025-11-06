@@ -1,0 +1,151 @@
+:root {
+  --bg-gradient: radial-gradient(circle at top, #023E8A 0%, #03045E 100%);
+  --card-bg: #00B4D8;
+  --btn-green: #69D84F;
+  --btn-green-hover: #a7f432;
+  --text-dark: #000;
+}
+
+/* Eye icon image */
+.eye-icon {
+  width: 20px;
+  height: 20px;
+  opacity: 0.8;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.eye-icon:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+/* Register card */
+.register-card {
+  width: 425px;
+  background: var(--card-bg);
+  color: var(--text-dark);
+  border-radius: 30px;
+  padding: 2.5rem 2rem;
+  text-align: center;
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* Logo icon */
+.logo-circle {
+  width: 80px;
+  height: 80px;
+  background-color: #03045E;  
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto 1rem;
+}
+
+.logo-circle img {
+  width: 60px;
+  height: 60px;
+}
+
+/* Headings */
+.register-logo {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.register-title {
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+  color: var(--text-dark);
+}
+
+/* Input fields */
+.input-group {
+  text-align: left;
+  margin-bottom: 1rem;
+}
+
+.input-group label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+  color: var(--text-dark);
+}
+
+.input-group input {
+  width: 100%;
+  background: #fff;
+  color: var(--text-dark);
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 0.5rem 0.75rem;
+  outline: none;
+  font-size: 0.95rem;
+  transition: box-shadow 0.3s ease;
+}
+
+.input-group input:focus {
+  box-shadow: 0 0 0 2px rgba(0, 180, 216, 0.5);
+}
+
+/* Password eye icon alignment */
+.password-wrapper {
+  position: relative;
+}
+
+.password-wrapper input {
+  padding-right: 2.2rem;
+}
+
+/* ✅ FIXED alignment */
+.password-wrapper .toggle-icon {
+  position: absolute;
+  right: 10px;
+  top: 33px; /* Ensures both Password and Confirm Password eye icons align perfectly */
+  cursor: pointer;
+  color: #000;
+  transform: none; /* remove translateY(-50%) for stable alignment */
+}
+
+/* Login link */
+.auth-link {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #03045E;
+  text-decoration: none;
+  margin-bottom: 1.5rem;
+}
+
+.auth-link:hover {
+  text-decoration: underline;
+}
+
+/* Register button */
+.btn-register {
+  background: var(--btn-green);
+  color: var(--text-dark);
+  font-weight: 600;
+  border: none;
+  border-radius: 10px;
+  padding: 0.7rem;
+  
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn-register:hover {
+  background: var(--btn-green-hover);
+  transform: scale(1.03);
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .register-card {
+    width: 90%;
+    padding: 1.5rem;
+  }
+}

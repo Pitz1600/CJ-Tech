@@ -1,0 +1,76 @@
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.popup-box {
+  background-color: #00b9d6;
+  border-radius: 20px;
+  padding: 30px 40px;
+  text-align: center;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+  width: 280px;
+  color: black;
+  font-family: Arial, sans-serif;
+}
+
+.popup-logo {
+  background-color: white;
+  color: black;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 10px;
+  font-weight: bold;
+}
+
+.popup-title {
+  font-size: 1.4rem;
+  margin: 5px 0;
+  font-weight: bold;
+}
+
+.popup-message {
+  font-size: 0.95rem;
+  margin: 10px 0 20px;
+}
+
+.popup-buttons {
+  display: flex;
+  justify-content: space-around;
+  gap: 10px;
+}
+
+.popup-btn {
+  flex: 1;
+  border: none;
+  border-radius: 8px;
+  padding: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+  color: white;
+}
+
+.popup-btn.cancel {
+  background-color: #2ecc71;
+}
+
+.popup-btn.logout {
+  background-color: #e74c3c;
+}
+
+.popup-btn:hover {
+  transform: translateY(-2px);
+}

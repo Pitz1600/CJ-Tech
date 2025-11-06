@@ -1,0 +1,165 @@
+.searchbar-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10rem;
+  width: 100%;
+  margin-left: 100px;
+  box-sizing: border-box;
+}
+
+
+.searchbar-button:hover {
+  background-color: #ffffff;
+  border-color: #d1d5db;
+  cursor: default;
+}
+
+.searchbar-icon:hover {
+  transform: none;
+  opacity: 1;
+}
+
+/* ===== MOBILE (≤640px) ===== */
+@media (max-width: 640px) {
+  .searchbar-container {
+    flex-direction: column;          /* Stack search + sort vertically */
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;                       /* Reduce spacing */
+    margin-left: 0;                  /* Remove left offset on mobile */
+    padding: 0 1rem;
+  }
+
+  .searchbar-input-group {
+    width: 90%;                     /* Full width */
+    padding: 0.6rem 0.8rem;
+      justify-content: space-between;
+
+  }
+
+  .searchbar-input {
+    font-size: 0.9rem;
+  }
+
+  .searchbar-button {
+    padding: 0.6rem;
+  }
+
+  .sortbar-dropdown {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0;
+  }
+
+  .sortbar-label {
+    font-size: 1rem;
+  }
+
+  .sortbar-select {
+    width: 90%;
+    font-size: 0.9rem;
+    padding: 0.6rem;
+  }
+}
+
+/* ===== TABLETS (641px–1023px) ===== */
+@media (min-width: 641px) and (max-width: 1023px) {
+  .searchbar-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    margin-left: 0;
+  }
+
+  .searchbar-input-group {
+    width: 80%;
+    max-width: 600px;
+    
+  }
+
+  .sortbar-select {
+    width: 200px;
+  }
+}
+
+/* ===== DESKTOP (≥1024px) ===== */
+@media (min-width: 1024px) {
+  .searchbar-container {
+    flex-direction: row;
+    align-items: center;
+    gap: 10rem; /* Keep your original large spacing */
+    margin-left: 100px;
+  }
+
+  .searchbar-input-group {
+    max-width: 30vw;
+    width: 60%;
+  }
+}
+
+/* Base input group style */
+.searchbar-input-group {
+  display: flex;
+  flex: 1;
+  padding: 10px 15px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  background-color: #ffffff;
+  overflow: hidden;
+}
+
+.searchbar-input {
+  flex-grow: 1;
+  padding: 1rem 1.2rem;
+  border: none;
+  font-size: 0.875rem;
+  outline: none;
+  background-color: #ffffff;
+  color: #000000;
+  min-width: 0;
+}
+
+.searchbar-button {
+  background-color: #ffffff;
+  border-left: none;
+  padding: 1rem 1.2rem;
+  outline: none;
+  cursor: default;
+}
+
+.searchbar-icon {
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+}
+
+.sortbar-dropdown {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  padding: 10px 15px;
+  border-radius: 10px;
+}
+
+.sortbar-label {
+  color: #1f2937;
+  font-weight: 500;
+  font-size: 1.25rem;
+}
+
+.sortbar-select {
+  width: 200px;
+  padding: 1rem 1.2rem;
+  font-size: 1rem;
+  background-color: #ffffff;
+  color: #000000;
+  border: 1px solid #d1d5db;
+  border-radius: 0;
+  box-sizing: border-box;
+  height: auto;
+}
+

@@ -1,0 +1,329 @@
+.analysis-modal-overlay{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display:flex;
+  align-items:center;
+  background: rgba(0, 0, 0, 0.3); /* dark transparent overlay */
+  backdrop-filter: blur(2px); /* 💎 adds blur behind the modal */
+  justify-content:center;
+  z-index: 2000;
+}
+
+.small-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px; /* space between icon and text */
+  border: none;
+  color: black;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.small-btn:hover {
+  
+  transform: translateY(-1px);
+}
+
+.small-btn .icon {
+  width: 16px;
+  height: 16px;
+}
+
+
+.close-btn {
+  background: transparent;
+  border: none;
+  font-size: 1.6rem;
+  cursor: pointer;
+  color: black;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.close-btn:hover {
+  color: #000; /* keeps color consistent */
+  transform: scale(1.1); /* optional subtle hover animation */
+  background: transparent; /* prevents background flash */
+}
+
+/* Result header container */
+.result-header {
+  font-weight: bold;
+  text-align: left;
+  padding: 6px 10px;
+  border-radius: 6px;
+  margin-bottom: 6px;
+  width: fit-content;
+  color: #000;
+  background-color: #f2f2f2;
+  border-left: 6px solid transparent;
+}
+
+/* 🟥 Biased */
+.result-header.biased {
+  background-color: #ffe5e5;
+  border-left-color: #e63946;
+  color: #b00020;
+}
+
+/* 🟩 Neutral */
+.result-header.neutral {
+  background-color: #e7ffe7;
+  border-left-color: #2ecc71;
+  color: #1b5e20;
+}
+
+/* 🟨 Reviewable */
+.result-header.reviewable {
+  background-color: #fff9db;
+  border-left-color: #b59a00;
+  color: #8a7b00;
+}
+
+.analysis-modal-container{
+  background:#fff;
+  border-radius:8px;
+  width:90%;
+  max-width:760px;
+  padding:16px;
+  box-shadow:0 8px 30px rgba(0,0,0,0.2);
+}
+.analysis-modal-header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:12px;
+}
+
+.analysis-modal-header h2{
+    margin:0;
+    font-size:20px;
+    color: black;
+}
+.close-btn{
+  background:transparent;
+  border:none;
+  font-size:1.6rem;
+  cursor:pointer;
+  color: black;
+}
+.analysis-modal-body {
+  max-height: calc(90vh - 120px); 
+  overflow-y: auto; /* Enable scrolling */
+  padding-right: 10px; /* Add padding for scroll */
+  color: #000;
+}
+.analysis-modal-body p{
+    margin:6px 0;
+    color:black;
+}
+.analysis-raw{
+    margin-top:12px;
+    background:#f7f7f7;
+    color: black;
+    padding:8px;
+    border-radius:4px;
+    max-height:240px;
+    overflow:auto
+}
+.analysis-raw pre{
+    white-space:pre-wrap;
+    font-size:0.85rem
+}
+
+
+.analysis-modal-container {
+   background-color: #ffffff; /* 🔵 dark blue (change this to your desired color) */
+  border-radius: 8px;
+  width: 90%;
+  max-width: 760px; 
+  max-height: 90vh;
+  padding: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  overflow-y: auto;
+}
+
+.analysis-fields-column {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.close-btn:focus {
+  outline: none;
+  box-shadow: none;
+}
+.analysis-field {
+  display: flex;
+  flex-direction: column;
+}
+
+.analysis-field label {
+  font-weight: bold;
+  margin-bottom: 4px;
+  color: #333;
+}
+
+.field-content {
+  background-color: #f2f2f2;
+  padding: 8px;
+  border-radius: 4px;
+  color: #000;
+  font-size: 0.95rem;
+  word-break: break-word;
+  
+}
+
+.full-width {
+  margin-top: 16px;
+}
+
+.raw-json {
+  width: 100%;
+  height: 200px;
+  background-color: #f7f7f7;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 8px;
+  font-family: monospace;
+  font-size: 0.85rem;
+  resize: none;
+  color: #000;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.action-btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.action-btn.edit {
+  background-color: #28a745;
+  color: white;
+}
+
+.action-btn.export {
+  background-color: #17a2b8;
+  color: white;
+}
+
+.action-btn.delete-btn {
+  background-color: #dc3545;
+  color: black;
+}
+.analysis-field .field-content {
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 1rem;
+  margin-top: 0.5rem;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+  color: black;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  transition: box-shadow 0.3s ease;
+}
+
+.analysis-field .field-content:hover {
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.25);
+}
+
+.export-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background-color: #007bff;
+  color: black;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.2s ease;
+}
+
+.export-btn img {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+}
+
+.export-btn:hover {
+  background-color: #0069d9;
+}
+/* Delete button */
+.delete-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px; /* space between icon and text */
+  background-color: #e63946; /* red tone */
+  color: black;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.2s ease;
+}
+
+.delete-btn img {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.2s ease;
+}
+
+.delete-btn img:hover {
+  transform: scale(1.2);
+}
+
+.raw-json-controls {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.toggle-json-btn,
+.copy-json-btn {
+  background-color: #e0e0e0;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.2s ease;
+}
+
+.toggle-json-btn:hover,
+.copy-json-btn:hover {
+  background-color: #d0d0d0;
+}
+
+.raw-json {
+  width: 100%;
+  min-height: 200px;
+  font-family: monospace;
+  white-space: pre-wrap;
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 10px;
+  resize: vertical;
+}

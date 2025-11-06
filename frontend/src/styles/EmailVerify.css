@@ -1,0 +1,143 @@
+:root {
+  --bg-gradient: linear-gradient(to bottom, #023E8A, #000);
+  --card-bg: #00B4D8;
+  --btn-green: #69D84F;
+  --btn-green-hover: #a7f432;
+  --text-dark: #000;
+  --text-light: #fff;
+}
+.verify-greeting {
+  font-size: 1.4rem;
+  margin-top: 0.5rem;
+  color: #fff;
+}
+
+.verify-username {
+  color: #ffeb3b;
+  font-weight: bold;
+}
+
+.email-verify-card .verify-btn:disabled {
+  background-color: var(--btn-green); /* keep green */
+  opacity: 0.6;                        /* optional: indicate loading */
+  cursor: not-allowed;                 /* show as unclickable */
+}
+/* Card */
+.email-verify-card {
+  background-color: var(--card-bg);
+  padding: 2rem;
+  border-radius: 1.5rem;
+  width: 22rem;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+  color: var(--text-light);
+}
+
+/* Logo circle */
+.email-verify-card .logo {
+  width: 70px;
+  height: 70px;
+  margin: 0 auto 1rem auto;
+  border-radius: 50%;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.email-verify-card .logo img {
+  width: 35px;
+  height: 35px;
+  display: block;
+}
+
+/* Title & subtitle */
+.email-verify-card .title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 0.25rem;
+}
+
+.email-verify-card .subtitle {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-dark);
+  margin-bottom: 1.5rem;
+}
+
+/* OTP inputs container */
+.otp-inputs {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.otp-inputs input {
+  width: 45px;
+  height: 45px;
+  text-align: center;
+  font-size: 1.25rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  color: #000; /* force black text */
+  outline: none;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.otp-inputs input:focus {
+  border-color: #3d85c6;
+  box-shadow: 0 0 0 2px rgba(0, 180, 216, 0.4);
+}
+
+/* Buttons */
+.email-verify-card button {
+  width: 100%;
+  padding: 0.75rem 0;
+  margin-top: 0.75rem;
+  border: none;
+  border-radius: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+/* Verify button */
+.email-verify-card .verify-btn {
+  background-color: var(--btn-green);
+  color: var(--text-dark);
+}
+
+.email-verify-card .verify-btn:hover {
+  background-color: var(--btn-green-hover);
+  transform: scale(1.03);
+}
+
+/* Back button */
+.email-verify-card .back-btn {
+  background-color: #69D84F;
+  color: var(--text-dark);
+  width: 50%;
+  margin: 0.5rem auto 0 auto;
+  display: block;
+}
+
+.email-verify-card .back-btn:hover {
+  background-color: #a7f432;
+  transform: scale(1.03);
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .email-verify-card {
+    width: 90%;
+    padding: 1.5rem;
+  }
+
+  .otp-inputs input {
+    width: 38px;
+    height: 38px;
+    font-size: 1.1rem;
+  }
+}

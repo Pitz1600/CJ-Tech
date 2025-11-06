@@ -1,0 +1,365 @@
+.dashboard-container {
+  min-width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #012a54; 
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+.filter-export-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-top: 2rem;
+  gap: 1rem;
+}
+
+.export-btn {
+  background-color: #5cc13b;
+  color: black;
+  font-weight: 600;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.export-btn:hover {
+  background-color: #4da834;
+}
+
+.filter-section {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.filter-section label {
+  color: #333;
+  font-weight: 600;
+}
+
+.filter-section select {
+  padding: 0.4rem 0.6rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+
+.vertical-divider {
+  width: 1px;
+  background-color: #000;
+  height: auto;
+  min-height: 400px;
+  align-self: stretch;
+}
+
+
+  @media (max-width: 900px) {
+  .vertical-divider {
+    display: none;
+  }
+}
+
+.data-page {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+/* ==== DATA CARD ==== */
+.data-card {
+  background: white;
+  border-radius: 20px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  color: black;
+  padding: 2rem;
+  width: 100%;
+  align-items: start;
+  gap: 2rem;
+  box-sizing: border-box;
+  max-width: 1600px; /* prevent it from stretching too wide */
+  margin: 0 auto;
+}
+
+/* LEFT SIDE (Overview) */
+.overview-left {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  font-size: 20px;
+  color: #000;
+}
+
+.overview-row {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 600px;
+}
+
+.overview-row span:last-child {
+  color: #000;
+}
+
+.overview-left h2 {
+  font-size: 28px;
+  color: #000;
+  margin-bottom: 1rem;
+}
+
+
+.overview-left .data-number {
+  font-size: 24px;
+  font-weight: bold;
+  color: #5cc13b;
+}
+
+.filter-row {
+  margin-top: 5rem;
+}
+
+.filter-row select {
+  padding: 0.4rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.overview-right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.result-text {
+  text-align: center;
+  font-size: 14px;
+}
+
+.chart-description {
+  text-align: center;
+  font-size: 13px;
+  color: #555;
+}
+
+/* === Large Tablets & Small Desktops === */
+@media (max-width: 1200px) {
+  .data-card {
+    grid-template-columns: 1fr 1fr; /* 2 columns: left & right side */
+    gap: 1.5rem;
+  }
+
+  .vertical-divider {
+    display: none;
+  }
+
+  .overview-left,
+  .overview-right {
+    align-items: center;
+    text-align: center;
+  }
+}
+
+@media (max-width: 900px) {
+  .data-card {
+    grid-template-columns: 1fr; /* stack all sections */
+    text-align: center;
+    padding: 1.5rem;
+    gap: 2rem;
+  }
+ .vertical-divider {
+    display: none;
+  }
+
+  .overview-left,
+  .overview-right {
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .overview-row {
+    justify-content: center;
+    gap: 1rem;
+  }
+
+}
+/* === Mobile Phones === */
+@media (max-width: 600px) {
+  .data-card {
+    padding: 1rem;
+    border-radius: 12px;
+  }
+
+  .overview-left h2 {
+    font-size: 22px;
+  }
+
+  .overview-left .data-number {
+    font-size: 20px;
+  }
+
+  .overview-row {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+}
+.data-toggle {
+   display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+    flex-wrap: wrap;
+    padding: 0 1rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.1rem;
+}
+
+.data-toggle button{
+      width: 120px;
+    height: 36px;
+    font-size: 14px;
+    background: #5cc13b;
+    color: black;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.empty-page {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  position: relative;
+}
+
+/* ==== CARD WRAPPER ==== */
+.empty-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;          
+  height: 100%;         
+ 
+}
+
+
+.empty-card {
+  box-sizing: border-box;
+  position: relative;
+  width: 100%;
+  max-width: 2000px;
+  height: 600px;
+  background: #ffffff;
+  border-radius: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  transition: all 0.3s ease; /* smooth resizing */
+}
+
+/* ==== LEFT SIDE ==== */
+.empty-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px;
+  border-right: 1px solid #ccc;
+  text-align: center;
+  min-height: 380px;
+}
+
+.usage-text {
+  color: #555;
+  font-size: 14px;
+  margin-bottom: 24px;
+}
+
+.start-btn {
+  background-color: #69d84f;
+  color: #000;
+  font-size: 18px;
+  font-weight: 700;
+  padding: 18px 36px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.start-btn:hover {
+  background-color: #a7f432;
+  transform: scale(1.05);
+}
+
+/* ==== RIGHT SIDE ==== */
+.empty-right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px;
+  gap: 16px;
+  text-align: center;
+  min-height: 380px;
+}
+
+.circle {
+  width: 190px;
+  height: 190px;
+  background-color: #9bd6f0;
+  border-radius: 50%;
+}
+
+.no-stats {
+  color: #555;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.description {
+  color: #777;
+  font-size: 14px;
+  max-width: 260px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+/* ==== RESPONSIVE ==== */
+@media (max-width: 900px) {
+  .empty-card {
+    grid-template-columns: 1fr;
+  }
+
+  .empty-left {
+    border-right: none;
+    border-bottom: 1px solid #ccc;
+  }
+
+  .empty-left,
+  .empty-right {
+    padding: 36px 20px;
+  }
+
+  .circle {
+    width: 150px;
+    height: 150px;
+  }
+}
