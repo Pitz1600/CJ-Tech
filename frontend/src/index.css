@@ -8,12 +8,16 @@
   --card-bg: #1C1F26;
   --btn-color: #0A84FF;
   --btn-color-hover: #00E0FF;
+  --btn-color-disabled: #555A6E;
   --card-border: #AAB3C2;
   --outer-glow: 0 0 15px #33C1FF;
   --text-color: #fff;
   --text-input: #000;
+  --text-input-bg: #fff;
   --btn-scale: scale(1.10);
   --icon-scale: scale(1.5);
+  --card-radius: 10px;
+  --card-padding: 2rem;
 }
 
 body {
@@ -72,10 +76,38 @@ button:hover {
   color: #000;
   border-color: #646cff;
   box-shadow: var(--outer-glow);
+  transform: scale(1.05);
 }
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+}
+
+button:disabled {
+  background-color: var(--btn-color-disabled);
+  color: var(--text-input);
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+input, select, textarea {
+  font-family: inherit;
+  font-size: 1em;
+  padding: 0.5em;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: var(--text-input-bg);
+  color: var(--text-input);
+  transition: box-shadow 0.25s ease;
+  outline: none;
+}
+
+input:focus, select:focus, textarea:focus {
+  box-shadow: var(--outer-glow);
+}
+
+input[type="password"]::-ms-reveal {
+  filter: invert(1);
 }
 
 @media (prefers-color-scheme: light) {

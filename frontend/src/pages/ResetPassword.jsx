@@ -5,6 +5,7 @@ import axios from 'axios'
 import { toast } from 'react-toastify'
 import '../styles/ResetPassword.css'
 import logo from "../assets/cj-tech-logo.png";
+import BackModal from '../components/BackModal'
 
 const ResetPassword = () => {
   const { backendUrl } = useContext(AppContext)
@@ -17,6 +18,12 @@ const ResetPassword = () => {
   const [otp, setOtp] = useState('')
   const [isOtpSubmitted, setIsOtpSubmitted] = useState(false)
   const inputRefs = React.useRef([])
+  const [showBackModal, setShowBackModal] = useState(false)
+
+  const handleBack = () => {
+    setShowBackModal(false)
+    navigate('/login')
+  }
 
   const handleInput = (e, index) => {
     if (e.target.value.length > 0 && index < inputRefs.current.length - 1)
@@ -84,17 +91,16 @@ const ResetPassword = () => {
   return (
     <div className="reset-page">
       <div className="reset-card">
-<div className="logo-circle">
-  <img src={logo} alt="PureText Logo" />
-</div>
-       
-
-        {!isEmailSent && (
-  <form onSubmit={onSubmitEmail}>
-    <h1>PureText</h1>
+        <div className="logo-circle">
+          <img src={logo} alt="Logo" />
+        </div>
+        
+    {!isEmailSent && (
+    <form onSubmit={onSubmitEmail}>
+    <h1>CJ Tech</h1>
     <h2>Reset Password</h2>
 
-    <label className="text-left text-black block mb-1">Email Address</label>
+    <label className="input-label">Email Address</label>
     <input
       type="email"
       value={email}
@@ -106,7 +112,7 @@ const ResetPassword = () => {
     <button type="submit" className="btn" disabled={isLoading}>
       {isLoading ? 'Loading...' : 'Submit'}
     </button>
-
+    <br/>
     {/* ✅ New Back button below Submit */}
     <button
       type="button"
@@ -143,7 +149,7 @@ const ResetPassword = () => {
               {isLoading ? 'Loading...' : 'Verify OTP'}
             </button>
 
-            <button type="button" onClick={() => navigate('/login')} className="btn btn-small">
+            <button type="button" onClick={() => setShowBackModal(true)} className="btn btn-small">
               Back to Login
             </button>
           </form>
@@ -151,10 +157,10 @@ const ResetPassword = () => {
 
         {isOtpSubmitted && isEmailSent && (
           <form onSubmit={onSubmitNewPassword}>
-            <h1>PureText</h1>
+            <h1>CJ Tech</h1>
             <h4>Enter your new password</h4>
 
-            <label className="text-left text-black block mb-1">New Password</label>
+            <label className="input-label">New Password:</label>
             <input
               type="password"
               value={newPassword}
@@ -163,7 +169,7 @@ const ResetPassword = () => {
               required
             />
 
-            <label className="text-left text-black block mb-1">Confirm Password</label>
+            <label className="input-label">Confirm Password:</label>
             <input
               type="password"
               value={confirmPassword}
@@ -175,13 +181,20 @@ const ResetPassword = () => {
             <button type="submit" className="btn" disabled={isLoading}>
               {isLoading ? 'Loading...' : 'Submit'}
             </button>
-
-            <button type="button" onClick={() => navigate('/login')} className="btn btn-small">
+            <br/>
+            <button type="button" onClick={() => setShowBackModal(true)} className="btn btn-small">
               Back to Login
             </button>
           </form>
         )}
       </div>
+
+      {/* Back Confirmation */}
+      <BackModal
+        show={showBackModal}
+        onClose={() => setShowBackModal(false)}
+        onConfirm={handleBack}
+      />
     </div>
   )
 }

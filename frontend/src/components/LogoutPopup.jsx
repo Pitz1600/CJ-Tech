@@ -9,7 +9,7 @@ const LogoutPopup = ({ onConfirm, onCancel }) => {
           <div className="popup-logo">
           <img src={logoImg} alt="Logo" />
           </div>
-        <h2 className="popup-title">PureText</h2>
+        <h2 className="popup-title">CJ Tech</h2>
         <p className="popup-message">Are you sure you want to log out?</p>
         <div className="popup-buttons">
           <button className="popup-btn cancel" onClick={onCancel}>

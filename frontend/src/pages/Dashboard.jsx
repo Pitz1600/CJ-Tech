@@ -21,7 +21,7 @@ const Dashboard = () => {
   const [showExportModal, setShowExportModal] = useState(false);
 
   const { userData } = useContext(AppContext);
-  const name = userData.name || "PureText_User";
+  const name = userData.name || "Name_User";
 
   // 🧾 CSV Export Helper
   const exportToCSV = (analyses) => {

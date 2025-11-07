@@ -1,16 +1,18 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AppContext } from "../context/AppContext.jsx";
 import axios from "axios";
 import { toast } from "react-toastify";
 import "../styles/EmailVerify.css";
 import logo from "../assets/cj-tech-logo.png";
+import BackModal from "../components/BackModal.jsx";
 
 const EmailVerify = () => {
   axios.defaults.withCredentials = true;
   const { backendUrl, isLoggedIn, userData, getUserData } = useContext(AppContext);
   const navigate = useNavigate();
   const inputRefs = React.useRef([]);
+  const [showBackModal, setShowBackModal] = useState(false);
 
   const handleInput = (e, index) => {
     if (e.target.value.length > 0 && index < inputRefs.current.length - 1) {
@@ -52,7 +54,8 @@ const EmailVerify = () => {
   };
 
   const handleBack = () => {
-    navigate("/login");
+    navigate("/");
+    setShowBackModal(false);
   };
 
   useEffect(() => {
@@ -65,17 +68,13 @@ const EmailVerify = () => {
     <div className="email-verify-container">
       <div className="email-verify-card">
         <div className="logo">
-          <img src={logo} alt="PureText Logo" />
+          <img src={logo} alt="Logo" />
         </div>
 
-        <h2 className="title">PureText</h2>
+        <h2 className="title">CJ Tech</h2>
 
         <h3 className="verify-greeting">
-          Hey{" "}
-          <span className="verify-username">
-            {userData?.name || userData?.username || "there"}
-          </span>
-          !
+          Hey{" "}<em>{userData?.name || userData?.username || "there"}</em>!
         </h3>
 
         <h4 className="subtitle">
@@ -103,11 +102,18 @@ const EmailVerify = () => {
           <button type="submit" className="verify-btn">
             Verify OTP
           </button>
-          <button type="button" className="back-btn" onClick={handleBack}>
+          <button type="button" className="back-btn" onClick={() => setShowBackModal(true)}>
             Back
           </button>
         </form>
       </div>
+
+      {/* Back Confirmation */}
+      <BackModal
+        show={showBackModal}
+        onClose={() => setShowBackModal(false)}
+        onConfirm={handleBack}
+      />
     </div>
   );
 };

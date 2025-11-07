@@ -44,6 +44,7 @@
 .popup-message {
   font-size: 0.95rem;
   margin: 10px 0 20px;
+  text-align: center;
 }
 
 .popup-buttons {

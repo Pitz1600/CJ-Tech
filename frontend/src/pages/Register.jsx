@@ -70,15 +70,15 @@ function Register() {
             />
           </div>
 
-<div className="input-group password-wrapper">
-  <label>Confirm Password:</label>
-  <input
-    type='password'
-    value={confirmPassword}
-    onChange={(e) => setConfirmPassword(e.target.value)}
-    required
-  />
-</div>
+          <div className="input-group password-wrapper">
+            <label>Confirm Password:</label>
+            <input
+              type='password'
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              required
+            />
+          </div>
 
           <a href="/login" className="auth-link">
             Already have an account? Login

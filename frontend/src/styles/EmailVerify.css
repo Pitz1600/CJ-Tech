@@ -3,26 +3,13 @@
   margin-top: 0.5rem;
   color: #fff;
 }
-
-.verify-username {
-  color: #ffeb3b;
-  font-weight: bold;
-}
-
-.email-verify-card .verify-btn:disabled {
-  background-color: var(--btn-color); /* keep green */
-  opacity: 0.6;                        /* optional: indicate loading */
-  cursor: not-allowed;                 /* show as unclickable */
-}
 /* Card */
 .email-verify-card {
   background-color: var(--card-bg);
-  padding: 2rem;
-  border-radius: 1.5rem;
-  width: 22rem;
+  padding: var(--card-padding);
+  border-radius: var(--card-radius);
   text-align: center;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-  color: var(--text-color);
+  box-shadow: var(--outer-glow);
 }
 
 /* Logo circle */
@@ -30,31 +17,26 @@
   width: 70px;
   height: 70px;
   margin: 0 auto 1rem auto;
-  border-radius: 50%;
-  background-color: #fff;
+  border-radius: 20%;
+  background-color: var(--text-color);
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .email-verify-card .logo img {
-  width: 35px;
-  height: 35px;
-  display: block;
+  width: 70px;
+  height: 70px;
 }
 
 /* Title & subtitle */
 .email-verify-card .title {
-  font-size: 1.8rem;
   font-weight: 700;
-  color: var(--text-color);
   margin-bottom: 0.25rem;
 }
 
 .email-verify-card .subtitle {
-  font-size: 1rem;
   font-weight: 500;
-  color: var(--text-color);
   margin-bottom: 1.5rem;
 }
 
@@ -63,33 +45,23 @@
   display: flex;
   justify-content: space-between;
   margin-bottom: 1.5rem;
+  gap: 10px
 }
 
 .otp-inputs input {
   width: 45px;
   height: 45px;
   text-align: center;
-  font-size: 1.25rem;
+  font-size: 2rem;
   border-radius: 8px;
-  border: 1px solid #ccc;
-  background-color: #fff;
-  color: #000; /* force black text */
-  outline: none;
+  background-color: var(--text-input-bg);
+  color: var(--text-input);
   transition: box-shadow 0.2s ease, border-color 0.2s ease;
-}
-
-.otp-inputs input:focus {
-  border-color: #3d85c6;
-  box-shadow: 0 0 0 2px rgba(0, 180, 216, 0.4);
 }
 
 /* Buttons */
 .email-verify-card button {
-  width: 100%;
-  padding: 0.75rem 0;
   margin-top: 0.75rem;
-  border: none;
-  border-radius: 20px;
   font-weight: 600;
   cursor: pointer;
   transition: background 0.3s ease, transform 0.2s ease;
@@ -97,26 +69,25 @@
 
 /* Verify button */
 .email-verify-card .verify-btn {
+  width: 60%;
   background-color: var(--btn-color);
   color: var(--text-color);
 }
 
 .email-verify-card .verify-btn:hover {
   background-color: var(--btn-color-hover);
-  transform: scale(1.03);
+  color: var(--text-input);
 }
 
 /* Back button */
 .email-verify-card .back-btn {
-  background-color: #69D84F;
-  color: var(--text-color);
   width: 50%;
-  margin: 0.5rem auto 0 auto;
-  display: block;
+  margin: 0.75rem auto;
+  background-color: var(--btn-color);
 }
 
 .email-verify-card .back-btn:hover {
-  background-color: #a7f432;
+  background-color: var(--btn-color-hover);
   transform: scale(1.03);
 }
 

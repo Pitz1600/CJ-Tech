@@ -26,11 +26,11 @@ const AboutUs = () => {
         {page === "about" && (
           <>
             <div className="aboutus-logo">
-              <img src={logo} alt="PureText Logo" />
+              <img src={logo} alt="Logo" />
             </div>
 
             <div className="aboutus-card">
-              <h2>About PureText</h2>
+              <h2>About CJ Tech</h2>
               <p>
                 It is designed to identify and flag biased or discriminatory texts in online/offline settings.
                 The system ensures that all text undergoes spelling and grammatical correction before bias analysis, improving detection accuracy and readability.
@@ -57,7 +57,7 @@ const AboutUs = () => {
           <div className="privacy-card">
             <h2>Privacy Policy</h2>
             <p>
-              At PureText, we value your privacy and are committed to protecting
+              At CJ Tech, we value your privacy and are committed to protecting
               your personal information. This policy explains how we collect, use,
               and safeguard your data when using our services.
             </p>
@@ -76,8 +76,8 @@ const AboutUs = () => {
 
             <h2>Your Consent</h2>
             <p>
-              By using PureText, you consent to this privacy policy. You can request
-              data removal anytime by contacting us at privacy@puretext.com.
+              By using CJ Tech, you consent to this privacy policy. You can request
+              data removal anytime by contacting us at email@example.com.
             </p>
           </div>
         )}

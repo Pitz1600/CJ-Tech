@@ -179,7 +179,6 @@ const Home = () => {
                 ) : (
                   <p>
                     No analyzed text yet.<br />
-                    <StartAnalyzingButton onClick={() => navigate("/analyzer")} />
                   </p>
                 )}
               </div>
@@ -199,7 +198,6 @@ const Home = () => {
               </div>
 
               <div className="dashboard-card tips-card">
-                <TipsContent />
               </div>
             </div>
           </div>

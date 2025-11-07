@@ -5,7 +5,6 @@
   flex-direction: column;
   background-color: transparent;
   color: white;
-  font-family: Arial, sans-serif;
   align-items: center;
   justify-content: flex-start;
   box-sizing: border-box;
@@ -35,7 +34,7 @@
 }
 
 .intro-logo-container:hover .intro-logo {
-  animation: revealHoverAnimation 3s ease-out forwards;
+  animation: revealHoverAnimation 3s ease-out infinite;
 }
 
 @keyframes revealHoverAnimation {
@@ -50,18 +49,8 @@
   }
 }
 
-@keyframes outerGlowHoverAnimation {
-  0%, 100% {
-    box-shadow: none; /* No glow */
-  }
-  50% {
-    box-shadow: var(--outer-glow); /* Outer glow when image is fully revealed */
-  }
-}
-
-/* Apply the glow animation to the container */
 .intro-logo-container:hover {
-  animation: outerGlowHoverAnimation 3s ease-out forwards;
+    box-shadow: var(--outer-glow);
 }
 
 .intro-wrapper {
