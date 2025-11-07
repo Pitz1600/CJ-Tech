@@ -103,8 +103,8 @@ const Home = () => {
           <div className="intro-tips-wrapper">
             <div className="intro-section">
               <img src="/src/assets/cj-tech-logo.png" alt="App Logo" className="intro-logo" />
-              <h1>PureText</h1>
-              <h2>App for Identifying Biased Language</h2>
+              <h1>CJ Tech</h1>
+              <h2>App for ...</h2>
               <br />
               <button
                 className="nav-login-btn"
@@ -115,7 +115,7 @@ const Home = () => {
               </button>
             </div>
 
-            <div className="dashboard-card tips-card">
+            <div className="dashboard-card poster-card">
             </div>
           </div>
         </Container>

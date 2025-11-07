@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { AppContext } from "../context/AppContext";
+import '../index.css';
 import "../styles/Navbar.css";
 import logo from "../assets/cj-tech-logo.png";
 

@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom'
 import { AppContext } from '../context/AppContext'
 import axios from 'axios'
 import { toast } from 'react-toastify'
-import backIcon from '../assets/icon_back.png'
 import '../styles/ResetPassword.css'
 import logo from "../assets/cj-tech-logo.png";
 

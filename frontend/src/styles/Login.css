@@ -1,15 +1,5 @@
-:root {
-  --blue-gradient: linear-gradient(135deg, #03045E, #023E8A);
-  --panel-bg: linear-gradient(135deg, #0077b6, #00b4d8);
-  --text-light: #000;
-  --btn-green: #69d84f;
-  --btn-green-hover: #a7f432;
-}
-
 body {
   margin: 0;
-  font-family: "Segoe UI", sans-serif;
-  background: var(--blue-gradient);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -20,14 +10,14 @@ body {
 .login-container {
   width: 750px;
   max-width: 95%;
+  padding: 20px;
   height: 520px;
   display: flex;
   flex-direction: row;
   position: relative;
-  background: var(--panel-bg);
+  background: var(--container-bg);
   border-radius: 20px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
-  color: var(--text-light);
+  box-shadow: var(--outer-glow);
   overflow: hidden;
   transition: all 0.3s ease;
 }
@@ -40,7 +30,7 @@ body {
   bottom: 10%;
   left: 50%;
   width: 1px;
-  background: rgba(8, 8, 8, 0.3);
+  background: #fff;
 }
 
 /* Left section */
@@ -51,15 +41,10 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: #000;
   text-align: center;
 }
 
 .logo-circle {
-  width: 80px;
-  height: 80px;
-  background-color: #03045E;
-  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -67,9 +52,10 @@ body {
 }
 
 .logo-icon {
-  width: 60px;
-  height: 60px;
-  object-fit: contain;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: #fff;
 }
 
 .app-name {
@@ -119,7 +105,7 @@ body {
   outline: none;
   font-size: 0.95rem;
   background-color: #f9f9f9;
-  color: #000;
+  color: var(--text-input);
   transition: box-shadow 0.2s ease, background-color 0.2s ease;
 }
 
@@ -129,7 +115,7 @@ body {
 }
 
 .form-group input:focus {
-  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.5);
+  box-shadow: var(--outer-glow);
   color: #000;
 }
 
@@ -140,7 +126,6 @@ body {
 
 .forgot-row a {
   font-size: 0.85rem;
-  color: #03045e;
   font-weight: 600;
   text-decoration: none;
 }
@@ -158,33 +143,23 @@ body {
 
 .btn-login,
 .btn-register {
+  background-color: var(--btn-color);
   border: none;
   border-radius: 10px;
   padding: 0.6rem;
   font-weight: 600;
-  color: #000;
+  color: var(--text-color);
   cursor: pointer;
   transition: background 0.3s ease;
   font-size: 1rem;
   align-self: center;
-}
-
-.btn-login {
-  background: var(--btn-green);
-  width: 90%;
-}
-
-.btn-login:hover {
-  background: var(--btn-green-hover);
-}
-
-.btn-register {
-  background: #69d84f;
   width: 60%;
 }
 
+.btn-login:hover,
 .btn-register:hover {
-  background: #a7f432;
+  background: var(--btn-color-hover);
+  transform: var(--btn-scale);
 }
 
 /* Back button */
@@ -198,10 +173,13 @@ body {
   z-index: 2;
   padding: 0;
   transition: transform 0.15s;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
 }
 
 .icon-back-btn:hover {
-  background: none;
+  transform: var(--icon-scale);
 }
 
 /* ✅ Responsive Design */

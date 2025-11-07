@@ -47,12 +47,12 @@ function Register() {
         <div className="logo-circle">
           <img src={logoDrop} alt="logo" />
         </div>
-        <div className="register-logo">PureText</div>
+        <div className="register-logo">CJ Tech</div>
         <h4 className="register-title">Register</h4>
 
         <form onSubmit={onSubmitRegister}>
           <div className="input-group">
-            <label>Full Name:</label>
+            <label>User Name:</label>
             <input type="text" value={name} onChange={(e) => setName(e.target.value)} required />
           </div>
 
@@ -60,47 +60,27 @@ function Register() {
             <label>Email address:</label>
             <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
           </div>
-<div className="input-group password-wrapper">
-  <label>Password:</label>
-  <input
-    type={showPassword ? 'text' : 'password'}
-    value={password}
-    onChange={(e) => setPassword(e.target.value)}
-    required
-  />
-  <span
-    className="toggle-icon"
-    onClick={() => setShowPassword(!showPassword)} 
-  >
-    <img
-      src={showPassword ? eyeClosed : eyeOpen} 
-      alt="toggle password visibility"
-      className="eye-icon"
-    />
-  </span>
-</div>
+          <div className="input-group password-wrapper">
+            <label>Password:</label>
+            <input
+              type='password'
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </div>
 
 <div className="input-group password-wrapper">
   <label>Confirm Password:</label>
   <input
-    type={showConfirm ? 'text' : 'password'}
+    type='password'
     value={confirmPassword}
     onChange={(e) => setConfirmPassword(e.target.value)}
     required
   />
-  <span
-    className="toggle-icon"
-    onClick={() => setShowConfirm(!showConfirm)} 
-  >
-    <img
-      src={showConfirm ? eyeClosed : eyeOpen}
-      alt="toggle confirm password visibility"
-      className="eye-icon"
-    />
-  </span>
 </div>
 
-          <a href="/" className="auth-link">
+          <a href="/login" className="auth-link">
             Already have an account? Login
           </a>
 

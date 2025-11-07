@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { AppContext } from "../context/AppContext.jsx";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { ArrowLeft } from "lucide-react";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -41,10 +42,7 @@ const Login = () => {
             onClick={() => navigate("/")}
             aria-label="Back to Home"
           >
-            <img
-              src="/src/assets/icon_back.png"
-              alt="Back"
-            />
+            <ArrowLeft />
           </button>
           <div className="logo-circle">
             <img
@@ -53,8 +51,8 @@ const Login = () => {
               className="logo-icon"
             />
           </div>
-          <h2 className="app-name">PureText</h2>
-          <p className="app-desc">App for Identifying Biased Language</p>
+          <h2 className="app-name">CJ Tech</h2>
+          <p className="app-desc">App for ...</p>
           <p className="login-note">Login to Continue</p>
         </div>
 

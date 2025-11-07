@@ -1,12 +1,15 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
+import './index.css';
+import './styles/Navbar.css';
 import Home from "./pages/Home.jsx";
 import Login from "./pages/Login.jsx";
 import EmailVerify from "./pages/EmailVerify.jsx";
 import ResetPassword from "./pages/ResetPassword.jsx";
 import Register from "./pages/Register.jsx";
 import Dashboard from "./pages/Dashboard.jsx";
+import Create from "./pages/Create.jsx";
 import History from "./pages/History.jsx";
 import ProfileSettings from "./pages/ProfileSetting.jsx"; 
 import AboutUs from "./pages/AboutUs.jsx";
@@ -41,12 +44,8 @@ const App = () => {
           element={isLoggedIn ? <Dashboard /> : <Navigate to="/" />}
         />
         <Route
-          path="/analyzer"
-          element={isLoggedIn ? <Analyzer /> : <Navigate to="/" />}
-        />
-        <Route
-          path="/dictionary"
-          element={isLoggedIn ? <Dictionary /> : <Navigate to="/" />}
+          path="/create"
+          element={isLoggedIn ? <Create /> : <Navigate to="/" />}
         />
         <Route
           path="/history"

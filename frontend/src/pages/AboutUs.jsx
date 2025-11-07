@@ -3,7 +3,6 @@ import { useLocation, useNavigate } from "react-router-dom";
 import "../styles/AboutUs.css";
 import Container from "../components/Container.jsx";
 import logo from "../assets/cj-tech-logo.png";
-import backIcon from "../assets/icon_back.png";
 
 const AboutUs = () => {
   const navigate = useNavigate();

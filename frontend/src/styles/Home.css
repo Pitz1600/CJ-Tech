@@ -5,7 +5,6 @@
   flex-direction: column;
   background-color: transparent;
   color: white;
-  background-color: #012a54;
   font-family: Arial, sans-serif;
   align-items: center;
   justify-content: flex-start;
@@ -16,9 +15,11 @@
 .intro-logo {
   width: 120px;       
   margin-bottom: 24px;  
- margin-left: 120px;
+  margin-left: 120px;
   margin-top: 10px;   
   display: block;
+  background-color: #fff;
+  border-radius: 20px;
 }
 
 .intro-tips-wrapper {
@@ -38,12 +39,12 @@
 
 
 
-.tips-card {
+.poster-card {
   flex: 1;
   max-width: 400px;
   min-height: auto;
-  
-  
+  background-color: #1C1F26;
+  border-color: #AAB3C2;
 }
 
 .home-container .navbar {

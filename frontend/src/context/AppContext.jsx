@@ -14,7 +14,7 @@ const AppContextProvider = (props) => {
     const [isLoggedIn, setIsLoggedIn] = useState(() => {
     // Load from localStorage as fallback
     return localStorage.getItem("isLoggedIn") === "true";
-  });
+    });
     const [userData, setUserData] = useState(false);
     const [loading, setLoading] = useState(true);
 
@@ -32,6 +32,15 @@ const AppContextProvider = (props) => {
         }
     }
 
+    const getUserData = async () => {
+        try {
+            const {data} = await axios.get(backendUrl + '/api/user/data')
+            data.success ? setUserData(data.userData) : toast.error(data.message)
+        } catch (error) {
+            toast.error(error.message)
+        }
+    }
+
     useEffect(() => {
         getAuthState();
     }, [])
@@ -39,6 +48,8 @@ const AppContextProvider = (props) => {
     const value = {
         backendUrl,
         isLoggedIn, setIsLoggedIn,
+        userData, setUserData,
+        getUserData,
         loading,
         changePassword
     };

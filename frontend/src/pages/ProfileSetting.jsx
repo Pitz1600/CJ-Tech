@@ -106,7 +106,7 @@ const ProfileSettings = () => {
             <button className="settings-btn privacy" onClick={() => navigate("/privacy-policy")}>
               <div className="btn-content">
                 <div className="btn-left">
-                  <img src={privacyIcon} alt="Privacy" className="btn-icon" />
+                  <img src="" alt="Privacy" className="btn-icon" />
                   <div className="btn-text">
                     <div className="btn-title">Privacy Policy</div>
                     <div className="btn-subtitle">View our privacy terms</div>
@@ -119,7 +119,7 @@ const ProfileSettings = () => {
             <button className="settings-btn dark">
               <div className="btn-content">
                 <div className="btn-left">
-                  <img src={darkIcon} alt="Dark" className="btn-icon" />
+                  <img src="" alt="Dark" className="btn-icon" />
                   <div className="btn-text">
                     <div className="btn-title">Dark Mode</div>
                     <div className="btn-subtitle">Toggle dark theme</div>

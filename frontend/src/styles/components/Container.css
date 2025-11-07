@@ -1,18 +1,17 @@
 .container-wrapper {
-  background-color: #00bcd4;
-  color: black;
+  background-color: var(--container-bg);
+  color: white;
   width: 95%;
   max-width: 1400px;
   min-height: 85vh;
-  margin: 10vh auto; /* centers it vertically & horizontally */
+  margin: auto; /* centers it vertically & horizontally */
   border-radius: 1.5rem;
   padding: 1.5rem;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+  box-shadow: var(--outer-glow);
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-   margin: 1rem auto;
 }
 
 /* Small devices (phones) */

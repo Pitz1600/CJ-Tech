@@ -1,11 +1,3 @@
-:root {
-  --bg-gradient: linear-gradient(to bottom, #023E8A, #000);
-  --card-bg: #00B4D8;
-  --btn-green: #69D84F;
-  --btn-green-hover: #a7f432;
-  --text-dark: #000;
-  --text-light: #fff;
-}
 .verify-greeting {
   font-size: 1.4rem;
   margin-top: 0.5rem;
@@ -18,7 +10,7 @@
 }
 
 .email-verify-card .verify-btn:disabled {
-  background-color: var(--btn-green); /* keep green */
+  background-color: var(--btn-color); /* keep green */
   opacity: 0.6;                        /* optional: indicate loading */
   cursor: not-allowed;                 /* show as unclickable */
 }
@@ -30,7 +22,7 @@
   width: 22rem;
   text-align: center;
   box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-  color: var(--text-light);
+  color: var(--text-color);
 }
 
 /* Logo circle */
@@ -55,14 +47,14 @@
 .email-verify-card .title {
   font-size: 1.8rem;
   font-weight: 700;
-  color: var(--text-dark);
+  color: var(--text-color);
   margin-bottom: 0.25rem;
 }
 
 .email-verify-card .subtitle {
   font-size: 1rem;
   font-weight: 500;
-  color: var(--text-dark);
+  color: var(--text-color);
   margin-bottom: 1.5rem;
 }
 
@@ -105,19 +97,19 @@
 
 /* Verify button */
 .email-verify-card .verify-btn {
-  background-color: var(--btn-green);
-  color: var(--text-dark);
+  background-color: var(--btn-color);
+  color: var(--text-color);
 }
 
 .email-verify-card .verify-btn:hover {
-  background-color: var(--btn-green-hover);
+  background-color: var(--btn-color-hover);
   transform: scale(1.03);
 }
 
 /* Back button */
 .email-verify-card .back-btn {
   background-color: #69D84F;
-  color: var(--text-dark);
+  color: var(--text-color);
   width: 50%;
   margin: 0.5rem auto 0 auto;
   display: block;
