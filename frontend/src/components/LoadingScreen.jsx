@@ -4,9 +4,8 @@ import '../styles/components/LoadingScreen.css';
 const LoadingScreen = () => {
   return (
     <div className="loading-container">
-      <div className="spinner">
-        <div className="spinner-track"></div>
-        <div className="spinner-active"></div>
+      <div className="loading-bg">
+        <img src="/src/assets/cj-tech-logo.png" alt="App Logo" className="loading-logo" />
       </div>
 
       <div className="loading-text"><strong>Loading...</strong></div>

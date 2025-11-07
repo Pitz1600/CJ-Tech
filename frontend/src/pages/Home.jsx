@@ -100,9 +100,11 @@ const Home = () => {
 
       {!isLoggedIn ? (
         <Container>
-          <div className="intro-tips-wrapper">
+          <div className="intro-wrapper">
             <div className="intro-section">
-              <img src="/src/assets/cj-tech-logo.png" alt="App Logo" className="intro-logo" />
+              <div className='intro-logo-container'>
+                <img src="/src/assets/cj-tech-logo.png" alt="App Logo" className="intro-logo" />
+              </div>
               <h1>CJ Tech</h1>
               <h2>App for ...</h2>
               <br />
@@ -124,7 +126,8 @@ const Home = () => {
           <div className="verify-email-section">
             <img src="/src/assets/cj-tech-logo.png" alt="App Logo" />
             <h1>Hey {userData?.name || 'User'}!</h1>
-            <p>Please verify your email to continue.</p>
+            <p>Your email <em>{userData?.email || 'Email'}</em> is not verified.<br/>
+            Please verify your email to continue.</p>
             <button onClick={sendVerificationOtp} disabled={isLoading}>
               {isLoading ? 'Loading...' : 'Verify Email'}
             </button>

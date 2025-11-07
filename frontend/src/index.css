@@ -8,7 +8,7 @@
   --card-bg: #1C1F26;
   --btn-color: #0A84FF;
   --btn-color-hover: #00E0FF;
-  --secondary-color: #AAB3C2;
+  --card-border: #AAB3C2;
   --outer-glow: 0 0 15px #33C1FF;
   --text-color: #fff;
   --text-input: #000;
@@ -29,7 +29,7 @@ body {
 
 a {
   font-weight: 500;
-  color: #fff;
+  color: var(--text-color);
   text-decoration: inherit;
 }
 a:hover {
@@ -60,12 +60,12 @@ button {
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
   font-size: 1em;
-  font-weight: 500;
+  font-weight: bold;
   font-family: inherit;
   background-color: #0A84FF;
-  color: #fff;
+  color: var(--text-color);
   cursor: pointer;
-  transition: border-color 0.25s;
+  transition: all 0.25s ease;
 }
 button:hover {
   background-color: #00E0FF;
