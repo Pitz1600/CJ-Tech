@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import Navbar from "../components/Navbar";
-import AnalysisModal from "../components/AnalysisModal";
+import TaskModal from "../components/TaskModal";
 import SearchBar from "../components/SearchBar";
 import Pagination from "../components/Pagination";
 import "../styles/History.css";
@@ -10,23 +10,23 @@ import Container from "../components/Container";
 const History = () => {
   const navigate = useNavigate();
   const location = useLocation();
+
   const [searchValue, setSearchValue] = useState("");
-  const [sortBy, setSortBy] = useState("dateTime");
-  const [historyData, setHistoryData] = useState([]);
+  const [sortBy, setSortBy] = useState("dateCreated");
+  const [taskData, setTaskData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [showModal, setShowModal] = useState(false);
-  const [selectedAnalysis, setSelectedAnalysis] = useState(null);
+  const [selectedTask, setSelectedTask] = useState(null);
   const [itemsPerPage, setItemsPerPage] = useState(10);
 
   const sortOptions = [
-    { value: "id", label: "ID" },
-    { value: "dateTime", label: "Date/Time" },
-    { value: "prompt", label: "Prompt" },
-    { value: "category", label: "Category" },
-    { value: "score", label: "Sentiment Score" },
+    { value: "dateCreated", label: "Date Created" },
+    { value: "title", label: "Title" },
+    { value: "deadline", label: "Deadline" },
+    { value: "status", label: "Status" },
   ];
 
   const totalPages = Math.max(1, Math.ceil(filteredData.length / itemsPerPage));
@@ -40,112 +40,82 @@ const History = () => {
     if (currentPage > newTotal) setCurrentPage(newTotal);
   }, [itemsPerPage, filteredData, currentPage]);
 
-  const handleStartAnalyzing = () => navigate("/analyzer");
   const handleSearchChange = (e) => setSearchValue(e.target.value);
   const handleSortByChange = (e) => setSortBy(e.target.value);
 
-  const formatIdDisplay = (id) => {
-    if (!id) return "";
-    const str = String(id);
-    if (str.length <= 8) return str;
-    return `${str.slice(0, 4)}...${str.slice(-2)}`;
-  };
-
+  // ✅ Fetch tasks from new endpoint
   useEffect(() => {
-    const fetchAnalyses = async () => {
+    const fetchTasks = async () => {
       setLoading(true);
       setError(null);
       try {
-        const resp = await fetch("http://localhost:3001/api/user/analysis", {
+        const resp = await fetch("http://localhost:3001/api/task", {
           method: "GET",
           credentials: "include",
         });
-        if (!resp.ok) throw new Error(`Failed to fetch analyses: ${resp.status}`);
+        if (!resp.ok) throw new Error(`Failed to fetch tasks: ${resp.status}`);
 
         const json = await resp.json();
-        if (!json.success) throw new Error(json.message || "Failed to fetch analyses");
+        if (!json.success) throw new Error(json.message || "Failed to fetch tasks");
 
-        const mapped = (json.analyses || []).map((a) => {
-          const resultsArray = Array.isArray(a.results) ? a.results : [a];
+        // ✅ Map data to new fields
+        const mapped = (json.tasks || []).map((t) => ({
+          id: t._id || t.id,
+          _rawDateISO: t.createdAt ? new Date(t.createdAt).toISOString() : null,
+          dateCreated: t.createdAt
+            ? new Date(t.createdAt).toLocaleString("en-US", {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+                hour: "numeric",
+                minute: "2-digit",
+                hour12: true,
+              })
+            : "",
+          title: t.title || t.name || t.prompt || "(Untitled Task)",
+          deadline: t.deadline
+            ? new Date(t.deadline).toLocaleDateString("en-US", {
+                year: "numeric",
+                month: "short",
+                day: "numeric",
+              })
+            : "No Deadline",
+          status: t.status || "Pending",
+          raw: t,
+        }));
 
-          let category = "Neutral";
-          const allCategories = resultsArray.map((r) => (r.category || "").toLowerCase());
-          if (allCategories.includes("reviewable")) category = "Reviewable";
-          else if (allCategories.includes("biased")) category = "Biased";
-
-          const validScores = resultsArray
-            .map((r) => parseFloat(r.sentiment_score))
-            .filter((s) => !isNaN(s));
-          const avgSentiment =
-            validScores.length > 0
-              ? (validScores.reduce((sum, s) => sum + s, 0) / validScores.length).toFixed(2)
-              : "N/A";
-
-          return {
-            id: a._id || a.id || Math.random().toString(36).slice(2, 9),
-            _rawDateISO: a.date ? new Date(a.date).toISOString() : null,
-            dateTime: a.date
-              ? new Date(a.date)
-                  .toLocaleString("en-US", {
-                    year: "numeric",
-                    month: "long",
-                    day: "numeric",
-                    hour: "numeric",
-                    minute: "2-digit",
-                    hour12: true,
-                  })
-                  .replace(",", "")
-              : "",
-            prompt: a.prompt || a.text || a.original_text || "",
-            category,
-            sentiment_score: avgSentiment,
-            raw: a,
-          };
-        });
-
-        setHistoryData(mapped);
+        setTaskData(mapped);
         setFilteredData(mapped);
       } catch (err) {
         console.error(err);
-        setError(err.message || "Error fetching analyses");
+        setError(err.message || "Error fetching tasks");
       } finally {
         setLoading(false);
       }
     };
 
-    fetchAnalyses();
+    fetchTasks();
   }, []);
 
+  // 🔍 Filter and sort logic for new fields
   useEffect(() => {
     const term = searchValue.toLowerCase().trim();
 
-    const baseFiltered = historyData.filter((item) => {
+    const baseFiltered = taskData.filter((item) => {
       if (!term) return true;
       return (
-        String(item.id || "").toLowerCase().includes(term) ||
-        String(item.dateTime || "").toLowerCase().includes(term) ||
-        String(item.prompt || "").toLowerCase().includes(term) ||
-        String(item.category || "").toLowerCase().includes(term) ||
-        String(item.sentiment_score || "").toLowerCase().includes(term)
+        String(item.dateCreated || "").toLowerCase().includes(term) ||
+        String(item.title || "").toLowerCase().includes(term) ||
+        String(item.deadline || "").toLowerCase().includes(term) ||
+        String(item.status || "").toLowerCase().includes(term)
       );
     });
 
     const sorted = [...baseFiltered].sort((a, b) => {
-      if (sortBy === "dateTime") {
-        const da = a._rawDateISO ? new Date(a._rawDateISO) : new Date(a.dateTime || 0);
-        const db = b._rawDateISO ? new Date(b._rawDateISO) : new Date(b.dateTime || 0);
-        return db - da;
-      }
-
-      if (sortBy === "score") {
-        const aIsNA = a.sentiment_score === "N/A" || a.sentiment_score === "" || a.sentiment_score == null;
-        const bIsNA = b.sentiment_score === "N/A" || b.sentiment_score === "" || b.sentiment_score == null;
-        if (aIsNA && bIsNA) return 0;
-        if (aIsNA) return 1;
-        if (bIsNA) return -1;
-        const va = parseFloat(a.sentiment_score);
-        const vb = parseFloat(b.sentiment_score);
-        return vb - va;
+      if (sortBy === "dateCreated") {
+        const da = a._rawDateISO ? new Date(a._rawDateISO) : new Date(a.dateCreated || 0);
+        const db = b._rawDateISO ? new Date(b._rawDateISO) : new Date(b.dateCreated || 0);
+        return db - da; // newest first
       }
 
       const va = String(a[sortBy] || "").toLowerCase();
@@ -155,21 +125,22 @@ const History = () => {
 
     setFilteredData(sorted);
     setCurrentPage(1);
-  }, [historyData, searchValue, sortBy]);
+  }, [taskData, searchValue, sortBy]);
 
+  // 🗑️ Handle task deletion
   const handleDeleteSuccess = (deletedId) => {
-    setHistoryData((prev) => prev.filter((item) => item.id !== deletedId));
+    setTaskData((prev) => prev.filter((item) => item.id !== deletedId));
     setFilteredData((prev) => prev.filter((item) => item.id !== deletedId));
   };
 
+  // 🧭 Open modal when navigated with state
   useEffect(() => {
-  if (location.state?.selectedAnalysis) {
-    setSelectedAnalysis(location.state.selectedAnalysis);
-    setShowModal(true);
-    // Clear state so modal doesn’t reopen on refresh
-    window.history.replaceState({}, document.title);
-  }
-}, [location.state]);
+    if (location.state?.selectedTask) {
+      setSelectedTask(location.state.selectedTask);
+      setShowModal(true);
+      window.history.replaceState({}, document.title);
+    }
+  }, [location.state]);
 
   return (
     <div className="history-container">
@@ -189,8 +160,7 @@ const History = () => {
           <div className="history-table-container">
             {filteredData.length === 0 ? (
               <div className="history-empty">
-                <p>{loading ? "Loading..." : "No results found."}</p>
-                <StartAnalyzingButton onClick={handleStartAnalyzing} />
+                <p>{loading ? "Loading..." : "No tasks found."}</p>
               </div>
             ) : (
               <>
@@ -198,11 +168,10 @@ const History = () => {
                   <table className="history-table">
                     <thead>
                       <tr>
-                        <th>ID</th>
-                        <th>Date / Time</th>
-                        <th>Prompt</th>
-                        <th>Category</th>
-                        <th>Sentiment Score</th>
+                        <th>Date Created</th>
+                        <th>Title</th>
+                        <th>Deadline</th>
+                        <th>Status</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -210,22 +179,19 @@ const History = () => {
                         <tr
                           key={item.id}
                           onClick={() => {
-                            setSelectedAnalysis(item.raw);
+                            setSelectedTask(item.raw);
                             setShowModal(true);
                           }}
                           style={{ cursor: "pointer" }}
                         >
-                          <td className="history-id-ellipsis" title={item.id}>
-                            {formatIdDisplay(item.id)}
+                          <td className="history-date-ellipsis" title={item.dateCreated}>
+                            {item.dateCreated}
                           </td>
-                          <td className="history-date-ellipsis" title={item.dateTime}>
-                            {item.dateTime}
+                          <td className="history-text-ellipsis" title={item.title}>
+                            {item.title}
                           </td>
-                          <td className="history-text-ellipsis" title={item.prompt}>
-                            {item.prompt}
-                          </td>
-                          <td>{item.category}</td>
-                          <td>{item.sentiment_score}</td>
+                          <td>{item.deadline}</td>
+                          <td>{item.status}</td>
                         </tr>
                       ))}
                     </tbody>
@@ -252,13 +218,13 @@ const History = () => {
       </div>
 
       {showModal && (
-        <AnalysisModal
+        <TaskModal
           show={showModal}
           onClose={() => {
             setShowModal(false);
-            setSelectedAnalysis(null);
+            setSelectedTask(null);
           }}
-          analysis={selectedAnalysis}
+          task={selectedTask}
           onDeleteSuccess={handleDeleteSuccess}
         />
       )}

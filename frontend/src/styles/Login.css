@@ -105,7 +105,7 @@ body {
   outline: none;
   font-size: 0.95rem;
   background-color: #f9f9f9;
-  color: var(--text-input);
+  color: var(--text-invert);
   transition: box-shadow 0.2s ease, background-color 0.2s ease;
 }
 

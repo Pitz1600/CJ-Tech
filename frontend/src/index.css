@@ -14,8 +14,7 @@
   --card-border: #AAB3C2;
   --outer-glow: 0 0 15px #33C1FF;
   --text-color: #fff;
-  --text-input: #000;
-  --text-input-bg: #fff;
+  --text-invert: #000;
   --btn-scale: scale(1.10);
   --icon-scale: scale(1.5);
   --card-radius: 10px;
@@ -87,7 +86,7 @@ button:focus-visible {
 
 button:disabled {
   background-color: var(--btn-color-disabled);
-  color: var(--text-input);
+  color: var(--text-invert);
   cursor: not-allowed;
   box-shadow: none;
 }
@@ -98,8 +97,8 @@ input, select, textarea {
   padding: 0.5em;
   border: 1px solid #ccc;
   border-radius: 8px;
-  background-color: var(--text-input-bg);
-  color: var(--text-input);
+  background-color: var(--text-color);
+  color: var(--text-invert);
   transition: box-shadow 0.25s ease;
   outline: none;
 }

@@ -21,6 +21,7 @@ const Navbar = () => {
     { name: "Home", path: "/" },
     { name: "Create", path: "/create" },
     { name: "History", path: "/history" },
+    { name: "Dashboard", path: "/dashboard" },
   ];
 
   const isActive = (path) => location.pathname === path;
@@ -124,14 +125,14 @@ const Navbar = () => {
           ))}
 
           <button
-  onClick={() => {
-    navigate("/profile-settings");
-    setMenuOpen(false);
-  }}
-  className={`mobile-profile ${isActive("/profile-settings") ? "active" : ""}`}
->
-  Profile
-</button>
+            onClick={() => {
+              navigate("/profile-settings");
+              setMenuOpen(false);
+            }}
+            className={`mobile-profile ${isActive("/profile-settings") ? "active" : ""}`}
+          >
+            Profile
+          </button>
         </div>
       )}
     </nav>

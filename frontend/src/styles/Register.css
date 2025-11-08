@@ -56,7 +56,7 @@
 .input-group input {
   width: 95%;
   background: #fff;
-  color: var(--text-input);
+  color: var(--text-invert);
   border: 1px solid #ccc;
   border-radius: 8px;
   padding: 0.5rem 0.75rem;

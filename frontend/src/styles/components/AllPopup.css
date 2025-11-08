@@ -57,13 +57,10 @@
 
 .popup-btn {
   flex: 1;
-  border: none;
-  border-radius: 8px;
   padding: 10px;
   font-weight: bold;
-  cursor: pointer;
   transition: 0.3s;
-  color: white;
+  margin-bottom: 10px;
 }
 
 .popup-btn.safe {

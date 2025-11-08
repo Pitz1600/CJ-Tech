@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "../styles/components/AnalysisModal.css";
-import DeleteModal from "../components/DeleteModal";
+import "../styles/components/TaskModal.css";
+import DeleteModal from "./DeleteModal";
 import deleteIcon from "../assets/icon_delete.png";
 import { toast } from "react-toastify";
 import editIcon from "../assets/icon_change.png";
 import copyIcon from "../assets/icon_copy.png";
 
-const AnalysisModal = ({ show, onClose, analysis, onDeleteSuccess }) => {
+const TaskModal = ({ show, onClose, analysis, onDeleteSuccess }) => {
   const [analysisData, setAnalysisData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -333,4 +333,4 @@ const AnalysisModal = ({ show, onClose, analysis, onDeleteSuccess }) => {
   );
 };
 
-export default AnalysisModal;
+export default TaskModal;

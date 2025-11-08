@@ -54,8 +54,8 @@
   text-align: center;
   font-size: 2rem;
   border-radius: 8px;
-  background-color: var(--text-input-bg);
-  color: var(--text-input);
+  background-color: var(--text-color);
+  color: var(--text-invert);
   transition: box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
@@ -76,7 +76,7 @@
 
 .email-verify-card .verify-btn:hover {
   background-color: var(--btn-color-hover);
-  color: var(--text-input);
+  color: var(--text-invert);
 }
 
 /* Back button */

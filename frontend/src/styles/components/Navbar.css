@@ -1,7 +1,7 @@
 /* Navbar container */
 .navbar {
   width: 100%;
-  background-color: var(--card-bg); 
+  background-color: var(--card-bg);
 }
 /* Profile initial badge */
 .nav-profile-initial {
@@ -26,7 +26,7 @@
 
 .nav-profile-initial.active {
   background-color: var(--btn-color-hover);
-  color: var(--text-input);
+  color: var(--text-invert);
 }
 
 /* For mobile dropdown */
@@ -85,12 +85,12 @@
 /* Active (highlighted) */
 .nav-links button.active {
   background-color: var(--btn-color-hover);
-  color: var(--text-input);
+  color: var(--text-invert);
 }
 
 .nav-links button:hover {
   background-color: var(--btn-color-hover);
-  color: var(--text-input);
+  color: var(--text-invert);
 }
 
 /* Hamburger menu (mobile) */
@@ -132,12 +132,12 @@
 
 .mobile-menu button.active {
   background-color: var(--btn-color-hover);
-  color: var(--text-input);
+  color: var(--text-invert);
 }
 
 .mobile-menu button:hover {
   background-color: var(--btn-color-hover);
-  color: var(--text-input);
+  color: var(--text-invert);
 }
 
 /* Responsive */

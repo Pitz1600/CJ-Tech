@@ -10,6 +10,7 @@ import ResetPassword from "./pages/ResetPassword.jsx";
 import Register from "./pages/Register.jsx";
 import Create from "./pages/Create.jsx";
 import History from "./pages/History.jsx";
+import Dashboard from "./pages/Dashboard.jsx";
 import ProfileSettings from "./pages/ProfileSetting.jsx"; 
 import AboutUs from "./pages/AboutUs.jsx";
 import { AppContext } from "./context/AppContext.jsx";
@@ -45,6 +46,10 @@ const App = () => {
         <Route
           path="/history"
           element={isLoggedIn ? <History /> : <Navigate to="/" />}
+        />
+        <Route
+          path="/dashboard"
+          element={isLoggedIn ? <Dashboard /> : <Navigate to="/" />}
         />
         <Route
           path="/profile-settings"

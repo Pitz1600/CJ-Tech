@@ -140,7 +140,7 @@ const Home = () => {
 
             <div className="dashboard-grid">
               <div className="dashboard-card recent-activity">
-                <h3>Recent Activity</h3>
+                <h3>Priority Tasks</h3>
                 {hasData ? (
                   <>
                     {analyses.slice(0, 3).map((a, i) => {
@@ -176,10 +176,17 @@ const Home = () => {
                       );
                     })}
                   </>
-                ) : (
-                  <p>
-                    No analyzed text yet.<br />
-                  </p>
+                ) : (<>
+                    <div>
+                      <p>
+                      No available tasks yet.<br />
+                      <button onClick={() => navigate('/create')}>
+                        Create New
+                      </button>
+                      </p>
+                    </div>
+                    <div></div>
+                  </>
                 )}
               </div>
 
@@ -192,12 +199,14 @@ const Home = () => {
                   </>
                 ) : (
                   <>
-                    <p>No statistics yet.</p>
+                    <div>
+                      <p>
+                      No statistics yet.<br />
+                      </p>
+                    </div>
+                    <div></div>
                   </>
                 )}
-              </div>
-
-              <div className="dashboard-card tips-card">
               </div>
             </div>
           </div>
