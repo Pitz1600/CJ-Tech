@@ -1,7 +1,9 @@
 import React, { useState, useContext } from "react";
-import "../styles/components/ChangePasswordPopup.css";
+import "../styles/components/AllPopup.css";
+import '../styles/components/ChangePasswordPopup.css';
 import { Save } from "lucide-react";
 import { AppContext } from "../context/AppContext";
+import { toast } from "react-toastify";
 
 const ChangePasswordPopup = ({ onCancel }) => {
   const [currentPassword, setCurrentPassword] = useState("");
@@ -13,7 +15,7 @@ const ChangePasswordPopup = ({ onCancel }) => {
     e.preventDefault();
 
     if (newPassword !== confirmPassword) {
-      alert("New passwords do not match!");
+      toast.error("New passwords do not match!");
       return;
     }
 
@@ -24,7 +26,7 @@ const ChangePasswordPopup = ({ onCancel }) => {
   return (
     <div className="popup-overlay">
       <div className="popup-box">
-        <h2 className="popup-title">Change password</h2>
+        <h1 className="popup-title">Change password</h1>
 
         <form onSubmit={handleSubmit} className="popup-form">
           <label>Current Password:</label>
@@ -51,12 +53,12 @@ const ChangePasswordPopup = ({ onCancel }) => {
             required
           />
 
-          <button type="submit" className="popup-btn save">
+          <button type="submit" className="popup-btn safe">
             Save Changes <Save size={18} />
           </button>
         </form>
 
-        <button className="popup-cancel" onClick={onCancel}>
+        <button className="popup-btn warn" onClick={onCancel}>
           Cancel
         </button>
       </div>

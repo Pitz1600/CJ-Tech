@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { AppContext } from "../context/AppContext";
 import '../index.css';
-import "../styles/Navbar.css";
+import '../styles/components/Navbar.css';
 import logo from "../assets/cj-tech-logo.png";
 
 const Navbar = () => {
@@ -19,10 +19,8 @@ const Navbar = () => {
 
   const navItems = [
     { name: "Home", path: "/" },
-    { name: "Analyzer", path: "/analyzer" },
-    { name: "Dictionary", path: "/dictionary" },
+    { name: "Create", path: "/create" },
     { name: "History", path: "/history" },
-    { name: "Dashboard", path: "/dashboard" },
   ];
 
   const isActive = (path) => location.pathname === path;

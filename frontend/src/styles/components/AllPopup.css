@@ -12,27 +12,29 @@
 }
 
 .popup-box {
-  background-color: #00b9d6;
+  background-color: var(--card-bg);
   border-radius: 20px;
   padding: 30px 40px;
   text-align: center;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
-  width: 280px;
-  color: black;
-  font-family: Arial, sans-serif;
+  box-shadow: var(--outer-glow);
+  width: 300px;
 }
 
 .popup-logo {
   background-color: white;
-  color: black;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  border-radius: 20%;
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0 auto 10px;
   font-weight: bold;
+}
+
+.popup-logo img {
+  width: 100px;
+  height: 100px;
 }
 
 .popup-title {
@@ -64,14 +66,18 @@
   color: white;
 }
 
-.popup-btn.cancel {
-  background-color: #2ecc71;
+.popup-btn.safe {
+  background-color: var(--btn-color);
 }
 
-.popup-btn.logout {
-  background-color: #e74c3c;
+.popup-btn.warn {
+  background-color: var(--btn-color-red);
 }
 
-.popup-btn:hover {
-  transform: translateY(-2px);
+.popup-btn.safe:hover {
+  background-color: var(--btn-color-hover);
+}
+
+.popup-btn.warn:hover {
+  background-color: var(--btn-color-redhover);
 }

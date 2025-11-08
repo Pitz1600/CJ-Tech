@@ -7,13 +7,13 @@ const DeleteModal = ({ show, onClose, onConfirm }) => {
   return (
     <div className="popup-overlay" onClick={onClose}>
       <div className="popup-box">
-        <h2 className="popup-title">Delete Analysis</h2>
-        <p className="popup-message">Are you sure you want to delete this analysis? This action cannot be undone.</p>
+        <h1 className="popup-title">Delete Analysis</h1>
+        <h2 className="popup-message">Are you sure you want to delete this analysis? This action cannot be undone.</h2>
         <div className="popup-buttons">
-          <button className="popup-btn cancel" onClick={onClose}>
+          <button className="popup-btn safe" onClick={onClose}>
             Cancel
           </button>
-          <button className="popup-btn logout" onClick={onConfirm}>
+          <button className="popup-btn warn" onClick={onConfirm}>
             Delete
           </button>
         </div>

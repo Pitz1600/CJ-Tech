@@ -136,7 +136,7 @@ const Home = () => {
       ) : (
         <Container>
           <div className="dashboard-wrapper">
-            <h2>Welcome, <span>{userData?.name || 'User'}</span>!</h2>
+            <h2 className='welcome-text'>Welcome, <span>{userData?.name || 'User'}</span>!</h2>
 
             <div className="dashboard-grid">
               <div className="dashboard-card recent-activity">

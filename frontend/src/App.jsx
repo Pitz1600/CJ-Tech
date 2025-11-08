@@ -2,13 +2,12 @@ import React, { useContext, useEffect, useState } from "react";
 import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import './index.css';
-import './styles/Navbar.css';
+import './styles/components/Navbar.css';
 import Home from "./pages/Home.jsx";
 import Login from "./pages/Login.jsx";
 import EmailVerify from "./pages/EmailVerify.jsx";
 import ResetPassword from "./pages/ResetPassword.jsx";
 import Register from "./pages/Register.jsx";
-import Dashboard from "./pages/Dashboard.jsx";
 import Create from "./pages/Create.jsx";
 import History from "./pages/History.jsx";
 import ProfileSettings from "./pages/ProfileSetting.jsx"; 
@@ -38,10 +37,6 @@ const App = () => {
         <Route
           path="/home"
           element={isLoggedIn ? <Home /> : <Navigate to="/" />}
-        />
-        <Route
-          path="/dashboard"
-          element={isLoggedIn ? <Dashboard /> : <Navigate to="/" />}
         />
         <Route
           path="/create"

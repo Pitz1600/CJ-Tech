@@ -1,11 +1,8 @@
 .container-wrapper {
   background-color: var(--container-bg);
-  width: 95%;
-  max-width: 1400px;
   min-height: 85vh;
   margin: auto; /* centers it vertically & horizontally */
   border-radius: 1.5rem;
-  padding: 1.5rem;
   box-shadow: var(--outer-glow);
   box-sizing: border-box;
   display: flex;

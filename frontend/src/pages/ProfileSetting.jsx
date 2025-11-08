@@ -4,15 +4,19 @@ import Navbar from "../components/Navbar";
 import { AppContext } from "../context/AppContext";
 import axios from "axios";
 import { toast } from "react-toastify";
+import '../index.css';
 import "../styles/ProfileSetting.css";
-import userIcon from "../assets/user.png";
 import Container from "../components/Container.jsx";
 import LogoutPopup from "../components/LogoutPopup.jsx";
 import ChangePasswordPopup from "../components/ChangePasswordPopup.jsx";
-import aboutIcon from "../assets/icon_about.png";
-import changeIcon from "../assets/icon_change.png";
-import deleteIcon from "../assets/icon_delete.png";
-import logoutIcon from "../assets/icon_logout.png";
+import { User } from "lucide-react"
+import { Settings } from "lucide-react"
+import { Users } from "lucide-react"
+import { Pencil } from "lucide-react"
+import { ScrollText } from "lucide-react"
+import { Moon } from "lucide-react"
+import { Trash2 } from "lucide-react"
+import { LogOut } from "lucide-react"
 
 const ProfileSettings = () => {
   const navigate = useNavigate();
@@ -54,22 +58,26 @@ const ProfileSettings = () => {
       <Container>
         {/* Top profile card */}
         <div className="profile-card">
-          <div className="profile-header">
+          <div className="profile-header">            
+          <div className="profile-title">
+            <User />
+            <h3>Profile Information</h3>
+          </div>
+
             <div className="profile-left">
-              <img src={userIcon} alt="User" className="profile-avatar" />
+              <User className="profile-avatar" />
               <div className="profile-info">
-                <h2>{userData ? userData.name : "Full Name"}</h2>
-                <p>{userData ? userData.email : "example@email.com"}</p>
+                <h1>{userData ? userData.name : "Full Name"}</h1>
+                <h3><em>{userData ? userData.email : "example@email.com"}</em></h3>
               </div>
             </div>
-            {/* <button type="button" className="edit-profile-btn">Edit Profile</button> */}
           </div>
         </div>
 
         {/* Settings card */}
         <div className="settings-card">
           <div className="settings-title">
-            <span className="settings-gear" aria-hidden>⚙️</span>
+            <Settings />
             <h3>Settings</h3>
           </div>
 
@@ -77,7 +85,7 @@ const ProfileSettings = () => {
             <button className="settings-btn about" onClick={() => navigate("/about-us")}>
               <div className="btn-content">
                 <div className="btn-left">
-                  <img src={aboutIcon} alt="About" className="btn-icon" />
+                  <Users />
                   <div className="btn-text">
                     <div className="btn-title">About Us</div>
                     <div className="btn-subtitle">Learn more about our platform</div>
@@ -93,7 +101,7 @@ const ProfileSettings = () => {
             >
               <div className="btn-content">
                 <div className="btn-left">
-                  <img src={changeIcon} alt="Change" className="btn-icon" />
+                  <Pencil />
                   <div className="btn-text">
                     <div className="btn-title">Change Password</div>
                     <div className="btn-subtitle">Update your security credentials</div>
@@ -106,7 +114,7 @@ const ProfileSettings = () => {
             <button className="settings-btn privacy" onClick={() => navigate("/privacy-policy")}>
               <div className="btn-content">
                 <div className="btn-left">
-                  <img src="" alt="Privacy" className="btn-icon" />
+                  <ScrollText />
                   <div className="btn-text">
                     <div className="btn-title">Privacy Policy</div>
                     <div className="btn-subtitle">View our privacy terms</div>
@@ -119,7 +127,7 @@ const ProfileSettings = () => {
             <button className="settings-btn dark">
               <div className="btn-content">
                 <div className="btn-left">
-                  <img src="" alt="Dark" className="btn-icon" />
+                  <Moon />
                   <div className="btn-text">
                     <div className="btn-title">Dark Mode</div>
                     <div className="btn-subtitle">Toggle dark theme</div>
@@ -132,7 +140,7 @@ const ProfileSettings = () => {
             <button className="settings-btn delete">
               <div className="btn-content">
                 <div className="btn-left">
-                  <img src={deleteIcon} alt="Delete" className="btn-icon" />
+                  <Trash2 />
                   <div className="btn-text">
                     <div className="btn-title">Delete Account</div>
                     <div className="btn-subtitle">Permanently remove your account</div>
@@ -145,7 +153,7 @@ const ProfileSettings = () => {
             <button className="settings-btn logout" onClick={() => setShowPopup(true)}>
               <div className="btn-content">
                 <div className="btn-left">
-                  <img src={logoutIcon} alt="Logout" className="btn-icon" />
+                  <LogOut />
                   <div className="btn-text">
                     <div className="btn-title">Logout</div>
                     <div className="btn-subtitle">Sign out from your account</div>
