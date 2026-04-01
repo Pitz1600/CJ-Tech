@@ -1,0 +1,108 @@
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    width: 100%;
+}
+
+.day-name {
+    padding: 1rem;
+    text-align: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    border-bottom: 1px solid var(--border-color);
+    background: var(--bg-hover);
+}
+
+.calendar-day {
+    min-height: 120px;
+    border-bottom: 1px solid var(--border-color);
+    border-right: 1px solid var(--border-color);
+    padding: 0.5rem;
+    transition: background-color 0.2s;
+    display: flex;
+    flex-direction: column;
+}
+
+.calendar-day:nth-child(7n) {
+    border-right: none;
+}
+
+.calendar-day.blank {
+    background-color: var(--bg-dark);
+    opacity: 0.5;
+}
+
+.calendar-day:hover:not(.blank) {
+    background-color: var(--bg-hover);
+}
+
+.calendar-day.today {
+    background-color: rgba(58, 130, 246, 0.05);
+}
+
+.day-number {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    display: inline-flex;
+    width: 28px;
+    height: 28px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.calendar-day.today .day-number {
+    background-color: var(--accent-blue);
+    color: white;
+}
+
+.schedules-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    flex: 1;
+    overflow-y: auto;
+}
+
+.schedule-pill {
+    font-size: 0.7rem;
+    padding: 0.25rem 0.5rem;
+    background-color: var(--bg-panel);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    cursor: pointer;
+    transition: border-color 0.2s;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.schedule-pill:hover {
+    border-color: var(--accent-blue);
+}
+
+.status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.status-dot.pending {
+    background-color: var(--warning);
+}
+
+.status-dot.progress {
+    background-color: var(--accent-blue);
+}
+
+.status-dot.completed {
+    background-color: var(--success);
+}

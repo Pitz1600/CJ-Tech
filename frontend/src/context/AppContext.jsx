@@ -1,57 +1,50 @@
 import { createContext, useEffect, useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { changePassword } from "./userService";
 
 const AppContext = createContext();
 
 const AppContextProvider = (props) => {
-
     axios.defaults.withCredentials = true;
 
     const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
-    const [isLoggedIn, setIsLoggedIn] = useState(() => {
-    // Load from localStorage as fallback
-    return localStorage.getItem("isLoggedIn") === "true";
-    });
-    const [userData, setUserData] = useState(false);
     const [loading, setLoading] = useState(true);
+    const [settings, setSettings] = useState(null);
 
-    const getAuthState = async () => {
+    const getSettings = async () => {
         try {
-            const {data} = await axios.get(backendUrl + '/api/auth/is-auth', {userId: userData.id})
+            setLoading(true);
+            const { data } = await axios.get(backendUrl + '/api/settings/get');
             if (data.success) {
-                setIsLoggedIn(true);
-                getUserData();
+                setSettings(data.settings);
             }
         } catch (error) {
-            toast.error(error.message)
+            console.error(error.message);
         } finally {
-        setLoading(false);
+            setLoading(false);
         }
     }
 
-    const getUserData = async () => {
+    const updateSettings = async (newSettings) => {
         try {
-            const {data} = await axios.get(backendUrl + '/api/user/data')
-            data.success ? setUserData(data.userData) : toast.error(data.message)
+            const { data } = await axios.post(backendUrl + '/api/settings/update', newSettings);
+            if (data.success) {
+                setSettings(data.settings);
+                toast.success("Settings updated successfully");
+            } else {
+                toast.error(data.message);
+            }
         } catch (error) {
-            toast.error(error.message)
+            toast.error(error.message);
         }
     }
-
-    useEffect(() => {
-        getAuthState();
-    }, [])
 
     const value = {
         backendUrl,
-        isLoggedIn, setIsLoggedIn,
-        userData, setUserData,
-        getUserData,
         loading,
-        changePassword
+        settings, setSettings,
+        getSettings, updateSettings
     };
 
     return (
